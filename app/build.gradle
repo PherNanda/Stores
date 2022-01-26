@@ -1,0 +1,113 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.android.stores"
+        minSdk 27
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        minSdkVersion 27
+        targetSdkVersion 31
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "API_BASE_URL", "\"http://prod.klikin.com/commerces/public\""
+
+            buildConfigField "String", "PACKAGE_NAME", "\"com.android.stores\""
+            buildConfigField "String", "STORES_APP_NAME", "\"Stores\""
+        }
+
+        debug {
+            minifyEnabled false
+            buildConfigField "String", "API_BASE_URL", "\"http://prod.klikin.com/commerces/public\""
+
+            buildConfigField "String", "PACKAGE_NAME", "\"com.android.stores\""
+            buildConfigField "String", "STORES_APP_NAME", "\"Stores\""
+
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+repositories {
+    google()
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+    maven {
+        url = uri("https://plugins.gradle.org/m2/")
+    }
+
+}
+
+dependencies {
+
+    implementation "androidx.core:core-ktx:$androidCore"
+    implementation "androidx.appcompat:appcompat:$androidAppCompat"
+    implementation "com.google.android.material:material:$androidMaterial"
+    implementation "androidx.constraintlayout:constraintlayout:$androidConstraintLayout"
+    implementation "androidx.navigation:navigation-fragment-ktx:$androidNavigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$androidNavigation"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$androidLifeCycleLiveData"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidLifeCycleViewModel"
+    implementation "androidx.activity:activity-ktx:$androidActivity"
+    implementation "androidx.fragment:fragment-ktx:$androidFragment"
+    implementation "androidx.annotation:annotation:$androidAnnotation"
+
+
+
+    testImplementation "junit:junit:$junit"
+    androidTestImplementation "androidx.test.ext:junit:$androidExtJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidExpresso"
+
+    // Coroutine
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutine"
+
+    // Json
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinSerialization"
+
+    //Coil Library
+    implementation "io.coil-kt:coil:$coil"
+
+    // Network
+    implementation "com.squareup.okhttp3:okhttp:$okhttp"
+    implementation "com.github.ihsanbal:LoggingInterceptor:$okhttpInterceptor"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitJson"
+
+    //Timber
+    implementation "com.jakewharton.timber:timber:$timber"
+
+    // Moshi
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi"
+
+    // Koin
+    implementation "org.koin:koin-android:$koin"
+    implementation "org.koin:koin-androidx-scope:$koin"
+    implementation "org.koin:koin-androidx-viewmodel:$koin"
+}
