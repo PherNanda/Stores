@@ -22,8 +22,6 @@ class ApiProvider {
     private val retrofit: Retrofit
 
     val storeApi: StoreApi
-
-
     init {
 
         val gson = GsonBuilder()
