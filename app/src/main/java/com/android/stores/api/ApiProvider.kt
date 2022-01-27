@@ -24,11 +24,6 @@ class ApiProvider {
     val storeApi: StoreApi
 
 
-    //val authPreference: DefaultAuthStore = DefaultAuthStore(context)
-    var statusConnect = false
-    var intentConnection = 0
-    val tryConnection = 1
-
     init {
 
         val gson = GsonBuilder()
